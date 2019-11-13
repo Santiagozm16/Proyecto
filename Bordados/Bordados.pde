@@ -7,101 +7,99 @@
 //para el bordado #1 presione la tecla “a”, para el bordado #2 la tecla “s” y para el bordado #2 la tecla “d”. Ningún bordado se puede superponer, para realizar esto debe realizar nuevamente la marcación de punto inicial y final. 
 //Para borrar todo presione la flecha a la izquierda. 
 
-float x0,y0,x1,y1,Px,Py,dis,cant,Sum1,Sum2,aux1,aux2,a,t9;
-boolean b1 = false ,b2 = false;
-float  distancia1 = 15, distanciAux; // Distancia entre punto y punto
-float m;
-color borrar = 204;
+float x0,y0,x1,y1,Px,Py,dis,cant,aux1,aux2,a;
+boolean b1 = false ,b2 = false; //Variables banderas que ayudan al dibujado y que solo se pueda dibujar una linea a la vez
+float  distancia1 = 15, distanciAux; // Distancia entre punto y punto (Esto es la relación de tamaño del bordado)  --- DistanciaAux se utiliza para guardar relación entre distancia 1 y Distancia Aux, esta se usa cuando se va a reducir el tamaño del bordado
+float m; // Pendiente
+color borrar = 204; //Color para borrar.
 int redondear, ultAct = 4; //Cuando aun no se ha dibujado nada.
 PImage menu;
 void setup(){
-menu = loadImage("Menu.png");
-
-size(855,500);
-frameRate(10);
+menu = loadImage("Menu.png"); //Imagen del menu
+size(855,700);
+frameRate(10); //Controlar acciones por segundo del mouse 
 }
 void draw(){
-textSize(10);
-text("click izquierdo= punto inicial, derecho= final. a= bordado_1, s=2 y d=3. <- izquierda= borrar", 2 + 10, 20);
 if(mousePressed == true && mouseButton == LEFT && b1 == false){
     if((mouseX>0) && (mouseX < 855) && (mouseY> 0) && (mouseY<116)){
-      
+      //Esta condicional es para que los puntos del bordado no puedan ser tomados en toda la parte del menu
     }else{
     x0= mouseX;
     Px = x0;
-    a = Px;
+    a = Px; //ESTE CAMBIO ES IMPORTANTE  LA HORA DE HACER EL BORRADO Y AUMENTAR EL TAMAÑO PARA QUE EL CICLO FOR SE EJECUTE DE UNA MANERA CORRECTA
     y0= mouseY;
-    b1 = true;
+    b1 = true; //Variable bandera de la toma del primer punto.
     }
   }
   if(mousePressed == true && mouseButton == RIGHT && b2 == false){
     if((mouseX>0) && (mouseX < 855) && (mouseY> 0) && (mouseY<116)){
-      
+      //Esta condicional es para que los puntos del bordado no puedan ser tomados en toda la parte del menu
     }else{
     x1 = mouseX;
     y1 = mouseY;
     distanciAux = distancia1;
-    if(x0<x1){
-    Calcular();
-    }else{
+    if(x0<x1){ //Condicional que genera la linea en caso de que esta sea marcada izquierda a derecha
+    Calcular(); //Llamado al metodo de calcular la pendiente e información necesaria para la construcción del bordado
+    }else{ //Si la linea es maracada de derecha a izquierda en esta parte se genera el cambio de variables para que esta pueda ser generada
     Px = x1;
-    a=Px;
+    a=Px; //ESTE CAMBIO ES IMPORTANTE  LA HORA DE HACER EL BORRADO Y AUMENTAR EL TAMAÑO PARA QUE EL CICLO FOR SE EJECUTE DE UNA MANERA CORRECTA
     aux1=x0;
     aux2=y0;
     x0=x1;
     y0=y1;
     x1=aux1;
     y1=aux2;
-    Calcular();
+    Calcular(); //Llamado al metodo de calcular la pendiente e información necesaria para la construcción del bordado
     }
 }
   }
-  if((mouseX>34) && (mouseX < 34+31) && (mouseY> 71) && (mouseY<71+31)&& mousePressed && mouseButton == LEFT){
+  // Mapeado de interfaz
+  if((mouseX>34) && (mouseX < 34+31) && (mouseY> 71) && (mouseY<71+31)&& mousePressed && mouseButton == LEFT){ //Boton 1 de la segunda fila de los botones circulares
   if(b2 == true){
-    dibujarBolitas(); //Bordado 01 - Gustavo
+    dibujarBolitas(); //Bordado 01 - Gustavo -- Llamado al metodo de dibujado
   }
   }
-  if((mouseX>34) && (mouseX < 34+31) && (mouseY> 13) && (mouseY<13+31)&& mousePressed && mouseButton == LEFT){
+  if((mouseX>34) && (mouseX < 34+31) && (mouseY> 13) && (mouseY<13+31)&& mousePressed && mouseButton == LEFT){ //boton 1 de la primer fila de los botones circulares 
     if(b2 == true){
-    dibujarPuntoCruz(); //Bordado 02 - Santiago
+    dibujarPuntoCruz(); //Bordado 02 - Santiago -- Llamado al metodo de dibujado
     }
   }
-  if((mouseX>158) && (mouseX < 158+31) && (mouseY> 12) && (mouseY<12+31)&& mousePressed && mouseButton == LEFT){
+  if((mouseX>158) && (mouseX < 158+31) && (mouseY> 12) && (mouseY<12+31)&& mousePressed && mouseButton == LEFT){ // boton 2 de la primer fila de los botones circulares
     if(b2 == true){
-    dibujarEso(); //Bordado 03 - Jesus
+    dibujarEso(); //Bordado 03 - Jesus -- Llamado al metodo de dibujado
     }
   }
-  if((mouseX>251) && (mouseX < 251+116) && (mouseY> 0) && (mouseY<0+119)&& mousePressed && mouseButton == LEFT){
-   background(204); 
+  if((mouseX>251) && (mouseX < 251+116) && (mouseY> 0) && (mouseY<0+119)&& mousePressed && mouseButton == LEFT){ // boton de la caneca para limpiar la imagen
+   background(borrar); 
   }
-  if((mouseX>365) && (mouseX < 365+91) && (mouseY> 0) && (mouseY<119)){
+  if((mouseX>365) && (mouseX < 365+91) && (mouseY> 0) && (mouseY<119)){ //Boton "+" es el mapeado para llamar la instrucción que se le da en el Switch de aumentar en la ventana Botones_mas_menos
     if(mousePressed && mouseButton == LEFT){
-      b1 = false;
+      b1 = false; //Se pone en false para que no se pueda entrar a la condicional de captura de puntos, osea donde se marca el primer punto para hacer el bordado
       distancia1 = distancia1 + 5;
-      if(distancia1>=45)
+      if(distancia1>=45) //Tamaño maximo que puede tener el bordado
       distancia1 = 45;
-      println(distancia1);
-      Aumentar(ultAct);
+      //println(distancia1);
+      Aumentar(ultAct); //Llamado al Switch Aumentar -- El parametro ultAct es un parametro de un numero entero este puede ir de 1 a 5, empezara en 5 al iniciar el programa, ultAct cambia al ejecutar diferentes bordados (Cambia en el metodo de dibujado al final de este).
     }
   }
-    if((mouseX>454) && (mouseX < 454+97) && (mouseY> 0) && (mouseY<119)){
+    if((mouseX>454) && (mouseX < 454+97) && (mouseY> 0) && (mouseY<119)){ //Boton "-" es el mapeado para llamar la instrucción que se le da en el Switch de Restaren la ventana Botones_mas_menos
     if(mousePressed && mouseButton == LEFT){
-      b1 = false;
-      distancia1 = distancia1 - 5;
-      if(distancia1<=0)
+      b1 = false; //Se pone en false para que no se pueda entrar a la condicional de captura de puntos, osea donde se marca el primer punto para hacer el bordado
+      distancia1 = distancia1 - 5; 
+      if(distancia1<=0) //Tamaño minimo que puede tener el bordado
       distancia1 = 5;
-      println(distancia1);
-      Restar(ultAct);
+      //println(distancia1);
+      Restar(ultAct); //Llamado al Switch Aumentar -- El parametro ultAct es un parametro de un numero entero este puede ir de 1 a 5, empezara en 5 al iniciar el programa, ultAct cambia al ejecutar diferentes bordados (Cambia en el metodo de dibujado al final de este).
     }
   }
   image(menu,0,0);
 }
-void Calcular(){
+void Calcular(){ //Calculos necesarios para la recta ¿"Principio de DDA" ?
     dis = dist(x0,y0,x1,y1);
     cant = dis/distancia1;
     redondear = round(cant);
     m = (y1-y0)/(x1-x0); //Ecuacion de una recta dado dos puntos y-y1=m(x-x1)
     b2 = true;
     stroke(255,104,105);
-    line(x0,y0,x1,y1);
+    line(x0,y0,x1,y1); //Es la linea naranja que se ve al principio.
 }

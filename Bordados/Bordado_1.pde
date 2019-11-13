@@ -34,5 +34,5 @@ void dibujarBolitas(){ //Diametro, pos x, pos y, cantidad de dibujos a realizar
   b1 = false;
   b2 = false;
   println("Se han dibujado " + redondear + " bolitas" );
-  ultAct = 1;
+  ultAct = 1; //ultActCambia Aqui, para este bordado se le da el #1 que es el Case 1 para aumentar o disminuir
 }

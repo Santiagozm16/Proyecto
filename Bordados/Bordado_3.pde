@@ -34,5 +34,5 @@ void dibujarEso(){
     println(x0 + " ---- " + y0 +" ---- " + x1 + " ---- " + y1);
     
     println("Se han dibujado " + redondear + " bolas " );
-    ultAct = 3;
+    ultAct = 3; //ultActCambia Aqui, para este bordado se le da el #3 que es el Case 2 para aumentar o disminuir.
 }}

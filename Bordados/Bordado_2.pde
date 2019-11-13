@@ -1,14 +1,14 @@
-float q,w,e,r,t,y,u,o;
-void dibujarPuntoCruz(){
+float q,w,e,r,t,y,u,o; //Variables auxiliares para guardar los puntos con los cuales se contruye la cinta y tapar el bordado generado previamente, se utilizan para aumentar y disminuir el tamaño del mismo.
+void dibujarPuntoCruz(){ //Metodo que genera el bordado con el tama{p definido previamente
     for(float i=a; i<=x1; i=i+distancia1){
     Px = i;
     Py = (m*(i-x1))+y1;
     stroke(87,35,100);
     if(i == a){
-    q=Px-distancia1/2; 
-    w=Py-distancia1/2;
-    e=q;
-    r=Py+distancia1/2;
+    q=Px-distancia1/2; //Punto utilizado para dibujar la cinta
+    w=Py-distancia1/2;//Punto utilizado para dibujar la cinta
+    e=q; //Punto utilizado para dibujar la cinta
+    r=Py+distancia1/2; //Punto utilizado para dibujar la cinta
     }
     beginShape(LINES);
     vertex(Px-distancia1/2,Py-distancia1/2);
@@ -17,19 +17,19 @@ void dibujarPuntoCruz(){
     vertex(Px-distancia1/2,Py+distancia1/2);
     endShape();
     }
-    t=Px+distancia1/2;
-    y=Py-distancia1/2;
-    u=t;
-    o=Py+distancia1/2;
+    t=Px+distancia1/2; //Punto utilizado para dibujar la cinta
+    y=Py-distancia1/2; //Punto utilizado para dibujar la cinta
+    u=t; //Punto utilizado para dibujar la cinta
+    o=Py+distancia1/2; //Punto utilizado para dibujar la cinta
     b1 = false;
     b2 = false;
     //println(x0 + " ---- " + y0 +" ---- " + x1 + " ---- " + y1);
     //println("La pendiente de la recta es "+ m );
     //println("Se han dibujado " + redondear + " X " );
-    ultAct = 2;
+    ultAct = 2; //ultActCambia Aqui, para este bordado se le da el #2 que es el Case 2 para aumentar o disminuir.
 }
 
-void Cinta(){
+void Cinta(){ //Cinta utilizado para borrar el bordado anterior y poder dibujar el bordado con mayor tamaño
     fill(borrar);
     stroke(borrar);
     beginShape();
@@ -40,7 +40,7 @@ void Cinta(){
     endShape(CLOSE);
 }
 
-void Cinta2(){
+void Cinta2(){ //Cinta utilizado para borrar el bordado anterior y poder dibujar el bordado con mayor tamaño
     fill(borrar);
     stroke(borrar);
     beginShape();

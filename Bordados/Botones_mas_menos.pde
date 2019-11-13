@@ -5,8 +5,8 @@ switch(opcion){
   
   break;
   case 2:
-  Cinta();
-  dibujarPuntoCruz();
+  Cinta(); //Llamado a cinta para borrar y luego si dibujar con el nuevo tamaño
+  dibujarPuntoCruz(); //Llamado a Punto de cruz para dibujar con el nuevo tamaño
   break;
   case 3:
   
@@ -24,8 +24,8 @@ switch(opcion){
   
   break;
   case 2:
-  Cinta2();
-  dibujarPuntoCruz();
+  Cinta2(); //Llamado a cinta para borrar y luego si dibujar con el nuevo tamaño
+  dibujarPuntoCruz(); //Llamado a Punto de cruz para dibujar con el nuevo tamaño
   break;
   case 3:
   
