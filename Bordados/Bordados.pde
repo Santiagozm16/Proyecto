@@ -12,6 +12,8 @@ boolean b1 = false ,b2 = false; //Variables banderas que ayudan al dibujado y qu
 float  distancia1 = 15, distanciAux; // Distancia entre punto y punto (Esto es la relación de tamaño del bordado)  --- DistanciaAux se utiliza para guardar relación entre distancia 1 y Distancia Aux, esta se usa cuando se va a reducir el tamaño del bordado
 float m; // Pendiente
 color borrar = 204; //Color para borrar.
+color colorBordado;//Color que tendra el bordado
+int seleccionColor = 5; //Indice para el switch de los colores, empieza en 5 que es el color negro, se utiliza para el switch de los colores.
 int redondear, ultAct = 5; //Cuando aun no se ha dibujado nada ultAct esta en 5 porque es su opcion en ambos Switch de aumentar y disminuir.
 PImage menu;
 void setup(){
