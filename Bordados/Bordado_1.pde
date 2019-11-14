@@ -16,7 +16,6 @@ void bordado1()
     fill(shadeRatio*i,shadeRatio+i, shadeRatio-i);
     pushMatrix();
     rotate(rotationRatio * i * PI/300);
-  
     fill(shadeRatio*i,shadeRatio+i, shadeRatio-i);
     rotate(rotationRatio * i * PI/-150);
     Estrella(pointCount, outerRadius - outerRadiusRatio * i, innerRadius - innerRadiusRatio * i);

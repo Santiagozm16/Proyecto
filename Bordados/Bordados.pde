@@ -99,6 +99,31 @@ if(mousePressed == true && mouseButton == LEFT && b1 == false){
       Restar(ultAct); //Llamado al Switch Aumentar -- El parametro ultAct es un parametro de un numero entero este puede ir de 1 a 5, empezara en 5 al iniciar el programa, ultAct cambia al ejecutar diferentes bordados (Cambia en el metodo de dibujado al final de este).
     }
   }
+  //COLORES
+  if((mouseX>596) && (mouseX < 596+29) && (mouseY> 15) && (mouseY<15+29)&& mousePressed && mouseButton == LEFT){ //Boton color rojo
+    seleccionColor = 1; //Cambia la variable para enviarla al Switch de colores.
+    Colores(seleccionColor); //Llamado al caso correspondiente del switch de colores.
+  }
+  if((mouseX>697) && (mouseX < 697+29) && (mouseY> 15) && (mouseY<15+29)&& mousePressed && mouseButton == LEFT){ //Boton color verde
+    seleccionColor = 2; //Cambia la variable para enviarla al Switch de colores.
+    Colores(seleccionColor); //Llamado al caso correspondiente del switch de colores.
+  }
+  if((mouseX>798) && (mouseX < 798+29) && (mouseY> 15) && (mouseY<15+29)&& mousePressed && mouseButton == LEFT){ //Boton color azul
+    seleccionColor = 3; //Cambia la variable para enviarla al Switch de colores.
+    Colores(seleccionColor); //Llamado al caso correspondiente del switch de colores.
+  }
+  if((mouseX>596) && (mouseX < 596+29) && (mouseY> 66) && (mouseY<66+29)&& mousePressed && mouseButton == LEFT){ //Boton color cafe
+    seleccionColor = 4; //Cambia la variable para enviarla al Switch de colores.
+    Colores(seleccionColor); //Llamado al caso correspondiente del switch de colores.
+  }
+  if((mouseX>697) && (mouseX < 697+29) && (mouseY> 66) && (mouseY<66+29)&& mousePressed && mouseButton == LEFT){ //Boton color negro
+    seleccionColor = 5; //Cambia la variable para enviarla al Switch de colores.
+    Colores(seleccionColor); //Llamado al caso correspondiente del switch de colores.
+  }
+  if((mouseX>798) && (mouseX < 798+29) && (mouseY> 66) && (mouseY<66+29)&& mousePressed && mouseButton == LEFT){ //Boton color blanco
+    seleccionColor = 6; //Cambia la variable para enviarla al Switch de colores.
+    Colores(seleccionColor); //Llamado al caso correspondiente del switch de colores.
+  }
   strokeWeight(1);//Es para evitar daños en el grosor de los otros bordados
   image(menu,0,0); //Llamado a la imagen del menu.
 }

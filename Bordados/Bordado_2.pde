@@ -3,7 +3,7 @@ void dibujarPuntoCruz(){ //Metodo que genera el bordado con el tama{p definido p
     for(float i=a; i<=x1; i=i+distancia1){
     Px = i;
     Py = (m*(i-x1))+y1;
-    stroke(87,35,100);
+    stroke(colorBordado);
     if(i == a){
     q=Px-distancia1/2; //Punto utilizado para dibujar la cinta
     w=Py-distancia1/2;//Punto utilizado para dibujar la cinta

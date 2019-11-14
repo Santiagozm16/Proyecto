@@ -1,10 +1,9 @@
 void dibujarLineaPunteada(){
- stroke(0);
+ stroke(colorBordado);
  line(x0,y0,x1,y1); 
  for(float i=a; i<=x1; i=i+distancia1){
     Px = i;
     Py = (m*(i-x1))+y1;
-    stroke(87,35,100);
     if(i == a){
     q=Px-distancia1/2; //Punto utilizado para dibujar la cinta
     w=Py-distancia1/2;//Punto utilizado para dibujar la cinta
