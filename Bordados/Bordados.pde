@@ -3,11 +3,12 @@
 //Jesus Ruiz
 //Santiago Rodriguez 
 //Instrucciones:
-//Para realizar un bordado marque el punto desde donde este inicia con click izquierdo y marque el punto final del bordado con click derecho, en este momento se dibujara el “hilo” guía, 
-//para el bordado #1 presione la tecla “a”, para el bordado #2 la tecla “s” y para el bordado #2 la tecla “d”. Ningún bordado se puede superponer, para realizar esto debe realizar nuevamente la marcación de punto inicial y final. 
-//Para borrar todo presione la flecha a la izquierda. 
 
 float x0,y0,x1,y1,Px,Py,dis,cant,aux1,aux2,a;
+int pointCount=5;
+int pointCount2=5;
+float oR1=0.81, iR1  =0.011;
+float oR2=0.30, iR2=0.05;
 boolean b1 = false ,b2 = false; //Variables banderas que ayudan al dibujado y que solo se pueda dibujar una linea a la vez
 float  distancia1 = 15, distanciAux; // Distancia entre punto y punto (Esto es la relación de tamaño del bordado)  --- DistanciaAux se utiliza para guardar relación entre distancia 1 y Distancia Aux, esta se usa cuando se va a reducir el tamaño del bordado
 float m; // Pendiente
@@ -70,7 +71,8 @@ if(mousePressed == true && mouseButton == LEFT && b1 == false){
   if((mouseX>158) && (mouseX < 158+31) && (mouseY> 12) && (mouseY<12+31)&& mousePressed && mouseButton == LEFT){ // boton 2 de la primer fila de los botones circulares
     if(b2 == true){
     dibujarEso(); //Bordado 03 - Jesus -- Llamado al metodo de dibujado
-    }
+ 
+  }
   }
   if((mouseX>158) && (mouseX < 158+31) && (mouseY> 71) && (mouseY<71+31)&& mousePressed && mouseButton == LEFT){ // boton 2 de la segunda fila de los botones circulares
     if(b2 == true){
@@ -136,3 +138,16 @@ void Calcular(){ //Calculos necesarios para la recta ¿"Principio de DDA" ?
     stroke(255,104,105);
     line(x0,y0,x1,y1); //Es la linea naranja que se ve al principio.
 }
+ void mouseWheel(MouseEvent event) {
+   float x3=event.getCount();
+   if(x3<0){
+         
+             pointCount++; 
+         pointCount2++;
+   }
+   if (x3>0){
+   
+          pointCount--; 
+         pointCount2--;
+   }
+  }
