@@ -2,7 +2,15 @@
 //Gustavo Leon
 //Jesus Ruiz
 //Santiago Rodriguez 
-//Instrucciones:
+//Instrucciones: Para realizar un bordado deme marcar primero dos puntos
+//el inicial con click izquierdo y el final con click derecho.
+//En este momento se generara una linea de color naranja, el programa
+//ya esata listo para realizar el bordado, debe escoger uno
+//de los 4 bordados que este ofrece que se encuentran en la parte
+//izquierda superior de la ventana, al presionar click sobre
+//el deseado este se dibujara, este se puede aumentar de tamaño 
+//y cambiar de color.
+//Para realizar un nuevo bordado repita el proceso.
 
 float x0,y0,x1,y1,Px,Py,dis,cant,aux1,aux2,a;
 int pointCount=5;
